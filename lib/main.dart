@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  Provider.debugCheckInvalidValueType = null;
   runApp(const MyApp());
 }
 
@@ -77,20 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class DisplayEventWidget extends StatefulWidget {
+class DisplayEventWidget extends StatelessWidget {
   final String title;
 
   const DisplayEventWidget({Key? key, required this.title}) : super(key: key);
-
-  @override
-  State<DisplayEventWidget> createState() => _DisplayEventWidgetState();
-}
-
-class _DisplayEventWidgetState extends State<DisplayEventWidget> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +90,7 @@ class _DisplayEventWidgetState extends State<DisplayEventWidget> {
       stream: context.read<Stream<int>>(),
       builder: (context, snapshot) {
         return Text(
-          widget.title + " - " + snapshot.data.toString(),
+          title + " - " + snapshot.data.toString(),
           style: Theme.of(context).textTheme.subtitle1,
         );
       },
