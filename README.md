@@ -1,16 +1,14 @@
-# flutter_channel_test
+# Flutter Event Channel Spike
 
-A new Flutter project.
+### Flow
+- Floating Action Button on Flutter Widget invokes `testAction` on Method channel - `com.example.flutter_channel_test/testChannel`
+- Native(Android) dispatches an event(Radnom Integer) on the event channel - `com.example.flutter_channel_test/testEventChannel`
+- Flutter listens to stream of these events and updates texts of multiple widgtes. 
+- Multiple stream instances can't be created. If we create multiple stream instances, only the latest one remains active. Stream needs to be shared in some way or the other. This spike uses `Provider`.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+### Important Files
+- [Android Activity](https://github.com/simararora07/Flutter-Event-Channel-Spike/blob/master/android/app/src/main/kotlin/com/example/flutter_channel_test/MainActivity.kt)
+- [Flutter Widget](https://github.com/simararora07/Flutter-Event-Channel-Spike/blob/master/lib/main.dart)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://user-images.githubusercontent.com/102601236/178691903-fd180f96-0329-47e3-854c-2e4282c96f0d.mov
